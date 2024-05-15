@@ -1,11 +1,25 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { bagSliceActions } from '../features/todo/BagSlice';
 
-function BagItem({item}) {
+function BagItem() {
+  const bagitem=useSelector(state=>state.bagItem)
+  console.log('bagitem',bagitem);
+  const dispatch=useDispatch()
+
+  const removebag=(id)=>{
+    dispatch(bagSliceActions.removebag(id))
+    console.log('clickedd',bagSliceActions.removebag(id));
+  }
   return (
     <>
+ {
+  bagitem.map((item)=>
+    (
+        // eslint-disable-next-line react/jsx-key
     <div className="bag-item-container">
     <div className="item-left-part">
-      <img className="bag-item-img" src="../${item.image}"/>
+      <img className="bag-item-img" src={item.image}/>
     </div>
     <div className="item-right-part">
       <div className="company">{item.company}</div>
@@ -24,8 +38,11 @@ function BagItem({item}) {
       </div>
     </div>
 
-    <div className="remove-from-cart" onClick="removeFromBag(${item.id})">X</div>
-  </div></>
+    <div className="remove-from-cart" onClick={()=>removebag(item.id)}>X</div>
+  </div>
+  ))
+ }
+  </>
   )
 }
 

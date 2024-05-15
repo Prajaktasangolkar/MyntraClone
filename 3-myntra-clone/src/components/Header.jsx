@@ -4,9 +4,11 @@ import { IoPerson } from "react-icons/io5";
 import { IoBagHandleSharp } from "react-icons/io5";
 import { GiChainedHeart } from "react-icons/gi";
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 
 function Header() {
+    const bagItem=useSelector(state=>state.bagItem)
   return (
     <>
           <header>
@@ -43,7 +45,7 @@ function Header() {
             <IoBagHandleSharp/>
 
                 <span className="action_name">Bag</span>
-                <span className="bag-item-count">0</span>
+                <span className="bag-item-count">{bagItem.length}</span>
             </Link>
         </div>
     </header>
