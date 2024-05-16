@@ -14,6 +14,9 @@ function BagItem() {
   return (
     <>
  {
+  bagitem.length === 0 ? (
+    <div style={{fontSize:'44px',fontWeight:"bold",display:'flex',justifyContent:'center',margin:'73px'}}>No items in the wishlist</div>
+  ) :
   bagitem.map((item)=>
     (
         // eslint-disable-next-line react/jsx-key

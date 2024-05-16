@@ -9,6 +9,7 @@ import { useSelector } from 'react-redux';
 
 function Header() {
     const bagItem=useSelector(state=>state.bagItem)
+    const wishlist=useSelector(state=>state.wishlist)
   return (
     <>
           <header>
@@ -35,11 +36,13 @@ function Header() {
                 <span className="action_name">Profile</span>
             </div>
 
-            <div className="action_container">
+            <Link className="action_container" to ='/wishlist'>
             <GiChainedHeart />
 
                 <span className="action_name">Wishlist</span>
-            </div>
+                <span className="bag-item-count">{wishlist.length}</span>
+
+            </Link>
 
             <Link className="action_container" to='/bag'>
             <IoBagHandleSharp/>
